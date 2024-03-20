@@ -8,7 +8,7 @@ import EmployerForm from './pages/EmployerForm';
 import StudentForm from './pages/StudentForm';
 import Signup from './pages/Signup';
 import NewJobForm from './pages/NewJobForm';
-// import AppliedJobs from './components/AppliedJobs';
+import AppliedJobs from './components/AppliedJobs';
 
 import './App.css';
 import MyJobs from './components/MyJobs';
@@ -28,7 +28,7 @@ function App() {
         <Route path='/student-form' element={<StudentForm />} />
         <Route path='/new-job-form' element={<NewJobForm />} />
         <Route path='/edit-jobs/:jobId' element={<EditJobForm />} />
-        {/* <Route path='/applied-jobs' element={<AppliedJobs />} /> */}
+        <Route path='/applied-jobs' element={<AppliedJobs />} />
       </Routes>
     </div>
   );
