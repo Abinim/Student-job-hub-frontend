@@ -33,6 +33,10 @@ export const myJobs = companyName => {
   return axios.get(`${baseURL}/my-jobs/${companyName}`);
 };
 
+export const appliedJobs = id => {
+  return axios.get(`${baseURL}/applied-jobs/${id}`);
+};
+
 export const getJob = id => {
   return axios.get(`${baseURL}/jobs/${id}`);
 };

@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { Grid, Text, Box, Button } from '@chakra-ui/react';
-import { allJobs, myJobs } from '../api/jobsportal.api';
+import { myJobs } from '../api/jobsportal.api';
 import { AuthContext } from '../context/auth.context';
 import { Link } from 'react-router-dom';
 
@@ -26,14 +26,19 @@ const MyJobs = () => {
     };
 
     user && fetchJobs();
-  }, []);
+  }, [user]);
 
   const handleApply = jobId => {
     console.log(`Applying for job with ID ${jobId}`);
   };
 
   return (
-    <Grid templateColumns='repeat(auto-fit, minmax(300px, 1fr))' gap={5} p={10}>
+    <Grid
+      templateColumns='repeat(auto-fit, minmax(300px, 1fr))'
+      gap={5}
+      p={10}
+      backgroundColor='#110000'
+    >
       {Array.isArray(jobs) && jobs.length > 0 ? (
         jobs.map(job => (
           <Box
@@ -41,35 +46,46 @@ const MyJobs = () => {
             maxW='400px'
             mx='auto'
             borderWidth='1px'
-            borderRadius='lg'
+            borderRadius='20'
             overflow='hidden'
             p='20px'
             boxShadow='lg'
             margin='auto'
             mt='200px'
-            bg='gray.100'
-            backgroundColor='#f9f9f9'
+            backgroundColor='#D89923'
+            _hover={{ bg: 'gray.200', boxShadow: 'xl' }}
           >
-            <Text fontSize='xl' fontWeight='bold' color={'black'} mb={2}>
+            <Text fontSize='25px' fontWeight='bold' color={'white'} mb={2}>
               {job.companyName}
             </Text>
-            <Text fontSize='md' fontWeight='semibold' color={'black'} mb={2}>
+            <Text fontSize='20px' fontWeight='bold' color={'white'} mb={2}>
               {job.address}
             </Text>
-            <Text fontSize='md' color={'black'} mb={2}>
+            <Text fontSize='md' fontWeight='bold' color={'black'} mb={2}>
               Date: {new Date(job.date.from).toLocaleDateString()} to{' '}
               {new Date(job.date.to).toLocaleDateString()}
             </Text>
-            <Text fontSize='md' color={'black'} mb={2}>
+            <Text fontSize='md' fontWeight='bold' color={'black'} mb={2}>
               Shift: {job.shift}
             </Text>
-            <Text fontSize='md' color={'black'} mb={2}>
+            <Text fontSize='md' fontWeight='bold' color={'black'} mb={2}>
               Payment per Hour: ${job.paymentPerHour}
             </Text>
-            <Text fontSize='md' color={'black'} mb={4}>
+            <Text fontSize='md' fontWeight='bold' color={'black'} mb={4}>
               Description: {job.description}
             </Text>
-            <Button as={Link} to={`/edit-jobs/${job._id}`}>
+            <Button
+              as={Link}
+              to={`/edit-jobs/${job._id}`}
+              type='submit'
+              colorScheme='purple'
+              mt={20}
+              size='lg'
+              style={{ fontSize: '20px', padding: '1px', borderRadius: '8px' }}
+              color={'red'}
+              bg='purple.500'
+              _hover={{ bg: 'purple.600' }}
+            >
               Edit
             </Button>
           </Box>

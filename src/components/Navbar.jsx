@@ -99,6 +99,9 @@ const Navbar = () => {
             <MenuItem as={RouterLink} to='/new-job-form' color='black'>
               New Job Form
             </MenuItem>
+            <MenuItem as={RouterLink} to='/applied-jobs' color='black'>
+              Applied Jobs
+            </MenuItem>
           </MenuList>
         </Menu>
       </Flex>

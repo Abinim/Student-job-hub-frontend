@@ -8,7 +8,7 @@ import {
   Textarea,
   Button,
 } from '@chakra-ui/react';
-import { getJobById, updateJob } from '../api/jobsportal.api';
+import { deleteJob, getJobById, updateJob } from '../api/jobsportal.api';
 import { useParams, useNavigate } from 'react-router-dom';
 import moment from 'moment';
 
@@ -19,7 +19,7 @@ const EditJobForm = () => {
   const [toDate, setToDate] = useState('');
   const [shift, setShift] = useState('');
   const [paymentPerHour, setPaymentPerHour] = useState('');
-  const [description, setDescription] = useState();
+  const [description, setDescription] = useState('');
 
   const navigate = useNavigate();
 
@@ -43,6 +43,15 @@ const EditJobForm = () => {
       setShift(response.data.shift);
       setPaymentPerHour(response.data.paymentPerHour);
       setDescription(response.data.description);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const handleDelete = async () => {
+    try {
+      await deleteJob(jobId);
+      navigate('/MyJobs');
     } catch (error) {
       console.log(error);
     }
@@ -85,11 +94,17 @@ const EditJobForm = () => {
       p={8}
       boxShadow='xxl'
       textAlign='center'
-      mt={8}
+      position='absolute'
+      top='50%'
+      left='50%'
+      bg='white'
+      transform='translate(-50%, -50%)'
+      zIndex='10'
     >
       <Heading as='h1' size='lg' color='purple' mb={4}>
         Edit Below here:
       </Heading>
+
       <form onSubmit={handleSubmit}>
         <FormControl id='companyName' mb={4}>
           <FormLabel color='black'>Company Name</FormLabel>
@@ -192,6 +207,7 @@ const EditJobForm = () => {
           Update
         </Button>
         <Button
+          onClick={handleDelete}
           type='submit'
           colorScheme='purple'
           mt={20}

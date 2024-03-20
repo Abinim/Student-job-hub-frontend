@@ -7,7 +7,7 @@ const EmployerForm = () => {
     <Box
       maxW='xl'
       borderWidth='1px'
-      borderRadius='lg'
+      borderRadius='20'
       overflow='hidden'
       p={8}
       boxShadow='lg'

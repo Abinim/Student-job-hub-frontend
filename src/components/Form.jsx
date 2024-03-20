@@ -176,7 +176,15 @@ const Form = ({ userType }) => {
             </FormControl>
           </>
         )}
-        <Button type='submit' mt={4} colorScheme='teal'>
+        <Button
+          type='submit'
+          colorScheme='purple'
+          size='lg'
+          borderRadius='8px'
+          width='100%'
+          _hover={{ bg: 'purple.600' }}
+          color={'red'}
+        >
           Submit
         </Button>
       </form>

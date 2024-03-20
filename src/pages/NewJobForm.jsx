@@ -83,7 +83,7 @@ const NewJobForm = () => {
       position='absolute'
       top='50%'
       left='50%'
-      bg='white'
+      bg='#F8F9FA'
       transform='translate(-50%, -50%)'
       zIndex='10'
     >
@@ -192,10 +192,6 @@ const NewJobForm = () => {
           Submit
         </Button>
       </form>
-
-      <Link as={Link} to='/edit-jobs' color='teal'>
-        Edit Jobs
-      </Link>
     </Box>
   );
 };
