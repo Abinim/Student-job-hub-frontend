@@ -76,6 +76,7 @@ const Form = ({ userType }) => {
             value={formData.name}
             onChange={handleChange}
             placeholder='Name'
+            style={{ height: '30px', width: '200px' }}
           />
         </FormControl>
         {userType === 'employer' && (
@@ -88,6 +89,7 @@ const Form = ({ userType }) => {
                 value={formData.companyName}
                 onChange={handleChange}
                 placeholder='Company Name'
+                style={{ height: '30px', width: '200px' }}
               />
             </FormControl>
             <FormControl isRequired>
@@ -98,6 +100,7 @@ const Form = ({ userType }) => {
                 value={formData.companyAddress}
                 onChange={handleChange}
                 placeholder='Company Address'
+                style={{ height: '30px', width: '200px' }}
               />
             </FormControl>
             <FormControl>
@@ -108,6 +111,7 @@ const Form = ({ userType }) => {
                 value={formData.tripAdvisorRanking}
                 onChange={handleChange}
                 placeholder='TripAdvisor Ranking'
+                style={{ height: '30px', width: '200px' }}
               />
             </FormControl>
             <FormControl>
@@ -118,6 +122,7 @@ const Form = ({ userType }) => {
                 value={formData.restaurantTypes}
                 onChange={handleChange}
                 placeholder='Enter restaurant types separated by commas'
+                style={{ height: '30px', width: '200px' }}
               />
             </FormControl>
           </>
@@ -132,6 +137,7 @@ const Form = ({ userType }) => {
                 value={formData.university}
                 onChange={handleChange}
                 placeholder='University'
+                style={{ height: '30px', width: '200px' }}
               />
             </FormControl>
             <FormControl isRequired>
@@ -142,6 +148,7 @@ const Form = ({ userType }) => {
                 value={formData.age}
                 onChange={handleChange}
                 placeholder='Age'
+                style={{ height: '30px', width: '200px' }}
               />
             </FormControl>
             <FormControl>
@@ -152,6 +159,7 @@ const Form = ({ userType }) => {
                 value={formData.address}
                 onChange={handleChange}
                 placeholder='Address'
+                style={{ height: '30px', width: '200px' }}
               />
             </FormControl>
             <FormControl>
@@ -162,6 +170,7 @@ const Form = ({ userType }) => {
                 value={formData.degree}
                 onChange={handleChange}
                 placeholder='Degree'
+                style={{ height: '30px', width: '200px' }}
               />
             </FormControl>
             <FormControl>
@@ -172,6 +181,7 @@ const Form = ({ userType }) => {
                 value={formData.experience}
                 onChange={handleChange}
                 placeholder='Experience'
+                style={{ height: '30px', width: '200px' }}
               />
             </FormControl>
           </>

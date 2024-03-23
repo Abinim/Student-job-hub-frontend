@@ -22,3 +22,25 @@ html {
 
   text-align: left;
 }
+
+.box-animation {
+  animation: moveBox 5s infinite alternate;
+}
+
+@keyframes moveBox {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(20px);
+  }
+}
+
+@keyframes wave-animation {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}

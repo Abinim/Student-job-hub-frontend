@@ -33,8 +33,16 @@ export const myJobs = companyName => {
   return axios.get(`${baseURL}/my-jobs/${companyName}`);
 };
 
-export const appliedJobs = id => {
-  return axios.get(`${baseURL}/applied-jobs/${id}`);
+export const getAppliedJobs = studentId => {
+  return axios.get(`${baseURL}/applied-jobs/${studentId}`);
+};
+
+export const applyJob = job => {
+  return axios.post(`${baseURL}/jobs/apply/${job.jobId}`, job);
+};
+
+export const unapplyJob = job => {
+  return axios.post(`${baseURL}/jobs/unapply/${job.jobId}`, job);
 };
 
 export const getJob = id => {

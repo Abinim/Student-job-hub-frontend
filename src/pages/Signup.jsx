@@ -39,7 +39,7 @@ const Signup = () => {
       mt='200px'
       p='20px'
       borderWidth='1px'
-      borderRadius='lg'
+      borderRadius='20px'
       backgroundColor='#f9f9f9'
     >
       <Text textAlign='center' color='black' fontSize='xl' mb='20px'>

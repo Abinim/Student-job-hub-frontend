@@ -9,7 +9,7 @@ const EmployerForm = () => {
       borderWidth='1px'
       borderRadius='20'
       overflow='hidden'
-      p={8}
+      p={60}
       boxShadow='lg'
       textAlign='center'
       position='absolute'

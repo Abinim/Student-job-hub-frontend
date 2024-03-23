@@ -42,7 +42,7 @@ const Login = () => {
       maxW='400px'
       mx='auto'
       borderWidth='1px'
-      borderRadius='lg'
+      borderRadius='20'
       overflow='hidden'
       p='20px'
       boxShadow='lg'
@@ -61,6 +61,7 @@ const Login = () => {
             value={email}
             onChange={({ target }) => setEmail(target.value)}
             placeholder='Email'
+            style={{ height: '30px', width: '200px' }}
           />
         </FormControl>
         <FormControl isRequired>
@@ -71,6 +72,7 @@ const Login = () => {
             value={password}
             onChange={({ target }) => setPassword(target.value)}
             placeholder='Password'
+            style={{ height: '30px', width: '200px' }}
           />
         </FormControl>
         <Button type='submit' mt={4} colorScheme='blue'>

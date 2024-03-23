@@ -11,7 +11,7 @@ const StudentForm = () => {
       borderWidth='1px'
       borderRadius='xl'
       overflow='hidden'
-      p={8}
+      p={60}
       boxShadow='xxl'
       textAlign='center'
       position='absolute'

@@ -1,16 +1,20 @@
 // AllJobs.jsx
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Grid, Text, Box, Button } from '@chakra-ui/react';
-import { allJobs } from '../api/jobsportal.api';
-import AppliedJobs from './AppliedJobs'; // Import AppliedJobs component
+import {
+  allJobs,
+  applyJob,
+  getAppliedJobs,
+  unapplyJob,
+} from '../api/jobsportal.api';
+// import AppliedJobs from './AppliedJobs'; // Import AppliedJobs component
+import { AuthContext } from '../context/auth.context';
 
 const AllJobs = () => {
   const [jobs, setJobs] = useState([]);
-  const [appliedJobs, setAppliedJobs] = useState(() => {
-    // Retrieve applied jobs from local storage on component mount
-    const storedJobs = localStorage.getItem('appliedJobs');
-    return storedJobs ? JSON.parse(storedJobs) : [];
-  });
+  const [appliedJobs, setAppliedJobs] = useState([]);
+
+  const { user } = useContext(AuthContext);
 
   useEffect(() => {
     const fetchJobs = async () => {
@@ -30,23 +34,46 @@ const AllJobs = () => {
     fetchJobs();
   }, []);
 
-  const handleApply = jobId => {
-    console.log(`Applying for job with ID ${jobId}`);
-    const appliedJob = jobs.find(job => job._id === jobId);
-    setAppliedJobs(prevState => [...prevState, appliedJob]);
-    // Store applied jobs in local storage
-    localStorage.setItem(
-      'appliedJobs',
-      JSON.stringify([...appliedJobs, appliedJob])
-    );
+  const fetchAppliedJobs = async () => {
+    try {
+      const response = await getAppliedJobs(user._id);
+      if (!response) {
+        throw new Error(`Failed to fetch applied jobs`);
+      }
+
+      console.log('Response data:', response.data);
+      setAppliedJobs(response.data);
+    } catch (error) {
+      console.error('Error fetching jobs:', error.message);
+    }
   };
 
-  const handleCancel = jobId => {
-    console.log(`Cancelling application for job with ID ${jobId}`);
-    setAppliedJobs(prevState => prevState.filter(job => job._id !== jobId));
-    // Update local storage after canceling the application
-    const updatedAppliedJobs = appliedJobs.filter(job => job._id !== jobId);
-    localStorage.setItem('appliedJobs', JSON.stringify(updatedAppliedJobs));
+  useEffect(() => {
+    try {
+      if (user) {
+        fetchAppliedJobs();
+      }
+    } catch (error) {}
+  }, [user]);
+
+  const handleApply = async jobId => {
+    try {
+      await applyJob({ jobId: jobId, studentId: user._id });
+
+      await fetchAppliedJobs();
+    } catch (error) {
+      console.log('error applying to job', error);
+    }
+  };
+
+  const handleCancel = async jobId => {
+    try {
+      await unapplyJob({ jobId: jobId, studentId: user._id });
+
+      await fetchAppliedJobs();
+    } catch (error) {
+      console.log('error unapplying to job', error);
+    }
   };
 
   return (
@@ -65,12 +92,12 @@ const AllJobs = () => {
             margin='auto'
             mt='0'
             bg='gray.100'
-            backgroundColor='#6B6F4B'
+            backgroundColor='#84a59d'
             marginBlock={0}
             padding={40}
             style={{ marginTop: '100px' }}
           >
-            <Text fontSize='25px' fontWeight='bold' color={'white'} mb={2}>
+            <Text fontSize='25px' fontWeight='bold' color={'#fcbf49'} mb={2}>
               {job.companyName}
             </Text>
             <Text fontSize='md' fontWeight='bold' color={'black'} mb={2}>
@@ -89,7 +116,8 @@ const AllJobs = () => {
             <Text fontSize='md' fontWeight='bold' color={'black'} mb={4}>
               Description: {job.description}
             </Text>
-            {appliedJobs.some(appliedJob => appliedJob._id === job._id) ? (
+            {appliedJobs.length &&
+            appliedJobs.some(appliedJob => appliedJob._id === job._id) ? (
               <Button
                 colorScheme='red'
                 size='sm'
@@ -114,10 +142,27 @@ const AllJobs = () => {
           </Box>
         ))
       ) : (
-        <Text>No jobs available</Text>
+        <Box
+          maxW='800px'
+          borderWidth='4px'
+          borderRadius='20px'
+          overflow='hidden'
+          p={40}
+          boxShadow='lg'
+          textAlign='center'
+          position='absolute'
+          top='50%'
+          left='50%'
+          transform='translate(-50%, -50%)'
+          zIndex='10'
+          backgroundColor='#ffba08'
+        >
+          <Text fontSize='20px' fontWeight='bold' color='white' mb={2}>
+            To view available job listings, please log in to your account first.
+            I appreciate your cooperation.
+          </Text>
+        </Box>
       )}
-      {/* Render AppliedJobs component passing appliedJobs and handleCancel */}
-      <AppliedJobs appliedJobs={appliedJobs} handleCancel={handleCancel} />
     </Grid>
   );
 };

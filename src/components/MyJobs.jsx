@@ -37,7 +37,7 @@ const MyJobs = () => {
       templateColumns='repeat(auto-fit, minmax(300px, 1fr))'
       gap={5}
       p={10}
-      backgroundColor='#110000'
+      backgroundColor='#2b2d42'
     >
       {Array.isArray(jobs) && jobs.length > 0 ? (
         jobs.map(job => (
@@ -52,10 +52,10 @@ const MyJobs = () => {
             boxShadow='lg'
             margin='auto'
             mt='200px'
-            backgroundColor='#D89923'
+            backgroundColor='#8d99ae'
             _hover={{ bg: 'gray.200', boxShadow: 'xl' }}
           >
-            <Text fontSize='25px' fontWeight='bold' color={'white'} mb={2}>
+            <Text fontSize='25px' fontWeight='bold' color={'#ef233c'} mb={2}>
               {job.companyName}
             </Text>
             <Text fontSize='20px' fontWeight='bold' color={'white'} mb={2}>
