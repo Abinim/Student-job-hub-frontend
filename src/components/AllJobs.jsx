@@ -139,8 +139,7 @@ const AllJobs = () => {
             marginBlock={0}
             padding={40}
             style={{ marginTop: '40px' }}
-            bg={backgroundColors[index % backgroundColors.length]} // Assigning background color based on index
-            // Increased padding for better spacing
+            bg={backgroundColors[index % backgroundColors.length]}
           >
             <Text fontSize='25px' fontWeight='bold' color='#310a31' mb={2}>
               {job.companyName}
@@ -156,7 +155,7 @@ const AllJobs = () => {
               Shift: {job.shift}
             </Text>
             <Text fontSize='20px' fontWeight='bold' color='white' mb={2}>
-              Payment per Hour: ${job.paymentPerHour}
+              Payment per Hour: €{job.paymentPerHour}
             </Text>
             <Text fontSize='20px' fontWeight='bold' color='white' mb={4}>
               Description: {job.description}
