@@ -1,15 +1,15 @@
+/* index.css */
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* global.css */
-
 html {
   height: 100%;
-  background-color: #e2dcd1;
-  background-image: url(https://images.unsplash.com/photo-1498409785966-ab341407de6e?q=80&w=2962&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);
+  background-color: #f6bd60;
+  background-image: url('https://www.wallpapers.net/web/wallpapers/download-3d-geometric-black-cube-wallpaper/2880x1800.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -19,9 +19,21 @@ html {
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5;
-
   text-align: left;
 }
+
+/* @keyframes changeBackgroundColor {
+  0% {
+    background-color: #055f2b;
+  }
+  100% {
+    background-color: #f3b511;
+  }
+}
+
+html {
+  animation: changeBackgroundColor 15s linear infinite; 
+} */
 
 .box-animation {
   animation: moveBox 5s infinite alternate;

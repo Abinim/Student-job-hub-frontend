@@ -7,15 +7,16 @@ function Home() {
     <Box
       p='6'
       bg='transparent'
-      margin={'150px'}
+      margin='0 auto'
       borderRadius='50px'
       minHeight='100vh'
+      pt='160px'
     >
       <Flex direction='column' alignItems='center'>
         <Box
           className='box-animation'
           bg='#ef476f'
-          p='40'
+          p='30px'
           borderRadius='20px'
           boxShadow='lg'
           mb='6'
@@ -67,10 +68,20 @@ function Home() {
             Our Projects
           </Heading>
           <Text color='white'>
-            Here you can describe your projects or any relevant information
-            about your website. You can add images, links, or further details to
-            showcase your projects.
+            Explore further insights about our project. Simply click the link
+            below for more information:
           </Text>
+
+          <Button
+            as={RouterLink}
+            to='/about-project'
+            colorScheme='teal'
+            size='lg'
+            mx='auto'
+            display='block'
+          >
+            About Project
+          </Button>
         </Box>
       </Flex>
     </Box>

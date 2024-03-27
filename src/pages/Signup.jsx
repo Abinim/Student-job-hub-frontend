@@ -8,6 +8,7 @@ import {
   FormLabel,
   Input,
   Text,
+  Flex,
   Link as ChakraLink,
 } from '@chakra-ui/react';
 
@@ -33,62 +34,70 @@ const Signup = () => {
   };
 
   return (
-    <Box
-      maxW='400px'
-      mx='auto'
-      mt='200px'
-      p='20px'
-      borderWidth='1px'
-      borderRadius='20px'
-      backgroundColor='#f9f9f9'
+    <Flex
+      align='center'
+      justify='center'
+      minH='100vh'
+      bg='gray.50'
+      px={{ base: '4', md: '8' }}
     >
-      <Text textAlign='center' color='black' fontSize='xl' mb='20px'>
-        Sign Up
-      </Text>
-      <form onSubmit={handleSubmit}>
-        <FormControl>
-          <FormLabel color='black'>Email</FormLabel>
-          <Input
-            type='email'
-            name='email'
-            value={email}
-            onChange={e => setEmail(e.target.value)}
-          />
-        </FormControl>
-        <FormControl mt='20px'>
-          <FormLabel color='black'>Password</FormLabel>
-          <Input
-            type='password'
-            name='password'
-            value={password}
-            onChange={({ target }) => setPassword(target.value)}
-          />
-        </FormControl>
-        <FormControl mt='20px'>
-          <FormLabel color='black'>Name</FormLabel>
-          <Input
-            type='text'
-            name='name'
-            value={name}
-            onChange={({ target }) => setName(target.value)}
-          />
-        </FormControl>
-        <Button type='submit' mt='20px' colorScheme='blue'>
-          Sign up
-        </Button>
-      </form>
-      {error && (
-        <Text color='red' mt='20px'>
-          {error}
+      <Box
+        maxW='400px'
+        mx='auto'
+        mt='200px'
+        p='20px'
+        borderWidth='1px'
+        borderRadius='20px'
+        backgroundColor='#f9f9f9'
+      >
+        <Text textAlign='center' color='black' fontSize='xl' mb='20px'>
+          Sign Up
         </Text>
-      )}
-      <Text textAlign='center' color='black' mt='20px'>
-        Already have an account?{' '}
-        <ChakraLink as={Link} to={'/login'} color='red'>
-          Login
-        </ChakraLink>
-      </Text>
-    </Box>
+        <form onSubmit={handleSubmit}>
+          <FormControl>
+            <FormLabel color='black'>Email</FormLabel>
+            <Input
+              type='email'
+              name='email'
+              value={email}
+              onChange={e => setEmail(e.target.value)}
+            />
+          </FormControl>
+          <FormControl mt='20px'>
+            <FormLabel color='black'>Password</FormLabel>
+            <Input
+              type='password'
+              name='password'
+              value={password}
+              onChange={({ target }) => setPassword(target.value)}
+            />
+          </FormControl>
+          <FormControl mt='20px'>
+            <FormLabel color='black'>Name</FormLabel>
+            <Input
+              type='text'
+              name='name'
+              value={name}
+              onChange={({ target }) => setName(target.value)}
+            />
+          </FormControl>
+          <Button type='submit' mt='20px' colorScheme='blue'>
+            Sign up
+          </Button>
+        </form>
+        {error && (
+          <Text color='red' mt='20px'>
+            {error}
+          </Text>
+        )}
+        <Text textAlign='center' color='black' mt='20px'>
+          Already have an account?{' '}
+          <ChakraLink as={Link} to={'/login'} color='red'>
+            Login
+          </ChakraLink>
+        </Text>
+      </Box>
+    </Flex>
   );
 };
 

@@ -48,15 +48,15 @@ const Navbar = () => {
         px={4}
       >
         <Link as={RouterLink} to='/'>
-          <Image src='/images/Student.jpg' alt='Logo' w='90px' />
+          <Image src='/images/Student1.jpg' alt='Logo' w='120px' />
         </Link>
         <Header />
         <Menu isOpen={menuOpen}>
           <MenuButton
             as={IconButton}
             icon={<HamburgerIcon />}
-            color='white'
-            fontSize='24px'
+            color='red'
+            fontSize='30px'
             display={{ base: 'block', md: 'none' }}
             variant='outline'
             onClick={toggleMenu}
@@ -101,6 +101,9 @@ const Navbar = () => {
             </MenuItem>
             <MenuItem as={RouterLink} to='/applied-jobs' color='black'>
               Applied Jobs
+            </MenuItem>
+            <MenuItem as={RouterLink} to='/Map' color='black'>
+              Map
             </MenuItem>
           </MenuList>
         </Menu>
