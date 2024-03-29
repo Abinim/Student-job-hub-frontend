@@ -1,8 +1,7 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-
 import { addJob } from '../api/jobsportal.api';
-import { Link } from 'react-router-dom';
+
 import {
   Box,
   Heading,
@@ -52,19 +51,19 @@ const NewJobForm = () => {
     setFormData({ ...formData, [name]: value });
   };
 
+  // Frontend Changes
   const handleSubmit = async e => {
     e.preventDefault();
     const jobPosting = {
       ...formData,
-      date: {
-        from: formData.fromDate,
-        to: formData.toDate,
-      },
+
+      fromDate: formData.fromDate + ':00',
+      toDate: formData.toDate + ':00',
     };
     try {
       const response = await addJob(jobPosting);
       console.log('Job created:', response.data);
-      navigate('/');
+      navigate('/my-jobs');
     } catch (error) {
       console.error('Error creating job:', error);
     }
@@ -150,6 +149,7 @@ const NewJobForm = () => {
               style={{ fontSize: '20px', padding: '1px', borderRadius: '8px' }}
             />
           </FormControl>
+
           <FormControl id='shift' mb={4}>
             <FormLabel color='black'>Shift</FormLabel>
             <Input

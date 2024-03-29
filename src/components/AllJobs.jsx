@@ -92,6 +92,7 @@ const AllJobs = () => {
       templateColumns='repeat(auto-fit, minmax(300px, 1fr))'
       gap={50}
       p={100}
+      className='jobs-background'
     >
       {errorMessage && (
         <Box
@@ -147,10 +148,44 @@ const AllJobs = () => {
             <Text fontSize='20px' fontWeight='bold' color='white' mb={4}>
               {job.address}
             </Text>
-            <Text fontSize='20px' fontWeight='bold' color='white' mb={2}>
-              Date: {new Date(job.date.from).toLocaleDateString()} to{' '}
-              {new Date(job.date.to).toLocaleDateString()}
-            </Text>
+            <Box fontSize='20px' fontWeight='bold' color='white' mb={2}>
+              <Text color='black'>Date:</Text>
+              <Flex alignItems='center'>
+                <Text mx={2} color='white'>
+                  <Text color='black'>
+                    {new Date(job.date.from).toLocaleDateString([], {
+                      year: 'numeric',
+                      month: 'short',
+                      day: '2-digit',
+                    })}
+                  </Text>
+                  <Text color='black'> From: </Text>
+                  <Text color='white'>
+                    {new Date(job.date.from).toLocaleTimeString([], {
+                      hour: '2-digit',
+                      minute: '2-digit',
+                    })}
+                  </Text>
+                </Text>
+                <Text mx={20} color='white'>
+                  <Text color='black'>
+                    {new Date(job.date.to).toLocaleDateString([], {
+                      year: 'numeric',
+                      month: 'short',
+                      day: '2-digit',
+                    })}
+                  </Text>
+                  <Text color='black'> To: </Text>
+                  <Text color='white'>
+                    {new Date(job.date.to).toLocaleTimeString([], {
+                      hour: '2-digit',
+                      minute: '2-digit',
+                    })}
+                  </Text>
+                </Text>
+              </Flex>
+            </Box>
+
             <Text fontSize='20px' fontWeight='bold' color='white' mb={2}>
               Shift: {job.shift}
             </Text>
@@ -173,7 +208,7 @@ const AllJobs = () => {
                 color={'red'}
                 onClick={() => handleCancel(job._id)}
               >
-                Cancel
+                Applied
               </Button>
             ) : (
               <Button

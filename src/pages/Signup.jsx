@@ -45,12 +45,18 @@ const Signup = () => {
         maxW='400px'
         mx='auto'
         mt='200px'
-        p='20px'
+        p='50px'
         borderWidth='1px'
         borderRadius='20px'
         backgroundColor='#f9f9f9'
       >
-        <Text textAlign='center' color='black' fontSize='xl' mb='20px'>
+        <Text
+          textAlign='center'
+          as={'h2'}
+          color='black'
+          fontSize='xl'
+          mb='20px'
+        >
           Sign Up
         </Text>
         <form onSubmit={handleSubmit}>
@@ -61,6 +67,7 @@ const Signup = () => {
               name='email'
               value={email}
               onChange={e => setEmail(e.target.value)}
+              style={{ height: '25px', width: '200px' }}
             />
           </FormControl>
           <FormControl mt='20px'>
@@ -70,6 +77,7 @@ const Signup = () => {
               name='password'
               value={password}
               onChange={({ target }) => setPassword(target.value)}
+              style={{ height: '25px', width: '200px' }}
             />
           </FormControl>
           <FormControl mt='20px'>
@@ -79,9 +87,16 @@ const Signup = () => {
               name='name'
               value={name}
               onChange={({ target }) => setName(target.value)}
+              style={{ height: '25px', width: '200px' }}
             />
           </FormControl>
-          <Button type='submit' mt='20px' colorScheme='blue'>
+          <Button
+            type='submit'
+            mt='20px'
+            colorScheme='blue'
+            bg={'white'}
+            style={{ height: '25px', width: '200px' }}
+          >
             Sign up
           </Button>
         </form>

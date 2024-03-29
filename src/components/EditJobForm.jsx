@@ -31,16 +31,8 @@ const EditJobForm = () => {
       const response = await getJobById(jobId);
       setCompanyName(response.data.companyName);
       setAddress(response.data.address);
-      setFromDate(
-        moment(response.data.date.from).format('YYYY-MM-DD') +
-          'T' +
-          moment(response.data.date.from).format('HH:MM')
-      );
-      setToDate(
-        moment(response.data.date.to).format('YYYY-MM-DD') +
-          'T' +
-          moment(response.data.date.to).format('HH:MM')
-      );
+      setFromDate(moment(response.data.date.from).format('YYYY-MM-DDTHH:mm'));
+      setToDate(moment(response.data.date.to).format('YYYY-MM-DDTHH:mm'));
       setShift(response.data.shift);
       setPaymentPerHour(response.data.paymentPerHour);
       setDescription(response.data.description);
@@ -52,7 +44,10 @@ const EditJobForm = () => {
   const handleDelete = async () => {
     try {
       await deleteJob(jobId);
-      navigate('/MyJobs');
+      // Refetch jobs after successfully deleting the job
+      getJob();
+      // Optionally, you can navigate to a different route after deleting the job
+      navigate('/my-jobs');
     } catch (error) {
       console.log(error);
     }
