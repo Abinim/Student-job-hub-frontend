@@ -41,8 +41,9 @@ const MyJobs = () => {
   return (
     <Grid
       templateColumns='repeat(auto-fit, minmax(300px, 1fr))'
-      gap={10}
-      p={60}
+      gap={5}
+      p={10}
+      pb={390}
       backgroundColor='#2b2d42'
       className='jobs-background'
     >
@@ -59,7 +60,7 @@ const MyJobs = () => {
               p='20px'
               boxShadow='lg'
               margin='auto'
-              mt='180px'
+              mt='200px'
               backgroundColor='#06d6a0'
               _hover={{ bg: 'gray.200', boxShadow: 'xl' }}
               bg={backgroundColors[index % backgroundColors.length]}

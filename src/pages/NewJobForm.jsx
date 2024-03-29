@@ -76,14 +76,14 @@ const NewJobForm = () => {
       minH='100vh'
       bg='gray.50'
       px={{ base: '4', md: '8' }}
+      p='35'
     >
       <Box
         style={{ borderRadius: '20px' }}
-        maxW='xxxl'
-        borderWidth='1px'
+        borderWidth='100px'
         borderRadius='xl'
         overflow='hidden'
-        p={8}
+        p={25}
         boxShadow='xxl'
         textAlign='center'
         position='absolute'
@@ -92,6 +92,7 @@ const NewJobForm = () => {
         bg='#F8F9FA'
         transform='translate(-50%, -50%)'
         zIndex='10'
+        maxW='400px'
       >
         <Heading as='h1' size='lg' color='purple' mb={4}>
           Create New Job

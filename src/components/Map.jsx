@@ -9,6 +9,7 @@ import {
   Stack,
   Flex,
   Spinner,
+  Text,
 } from '@chakra-ui/react';
 
 const Map = ({ apiKey }) => {
@@ -18,6 +19,9 @@ const Map = ({ apiKey }) => {
   const [origin, setOrigin] = useState('');
   const [destination, setDestination] = useState('');
   const [loading, setLoading] = useState(false);
+  const [travelMode, setTravelMode] = useState('DRIVING'); // Set default travel mode
+  const [duration, setDuration] = useState('');
+  const [legs, setLegs] = useState([]);
 
   const originAutocompleteRef = useRef(null);
   const destinationAutocompleteRef = useRef(null);
@@ -78,6 +82,22 @@ const Map = ({ apiKey }) => {
       (response, status) => {
         if (status === 'OK') {
           directionsRenderer.setDirections(response);
+          const route = response.routes[0];
+          const totalDuration = route.legs.reduce(
+            (acc, leg) => acc + leg.duration.value,
+            0
+          );
+          const hours = Math.floor(totalDuration / 3600);
+          const minutes = Math.floor((totalDuration % 3600) / 60);
+          setDuration(`${hours} hours ${minutes} minutes`);
+
+          setLegs(
+            route.legs.map(leg => ({
+              duration: leg.duration.text,
+              mode: leg.steps[0].travel_mode,
+              transitDetails: leg.steps[0].transit || null,
+            }))
+          );
         } else {
           alert('Directions request failed due to ' + status);
         }
@@ -132,6 +152,28 @@ const Map = ({ apiKey }) => {
           >
             {loading ? 'Loading...' : 'Get Directions'}
           </Button>
+          {duration && (
+            <Text fontSize='lg' fontWeight='bold'>
+              Duration: {duration}
+            </Text>
+          )}
+          {legs.length > 0 && (
+            <>
+              <Text fontSize='lg' fontWeight='bold'>
+                Steps:
+              </Text>
+              <ul>
+                {legs.map((leg, index) => (
+                  <li key={index}>
+                    {leg.duration} - {leg.mode}
+                    {leg.transitDetails && (
+                      <span> - {leg.transitDetails.line.short_name}</span>
+                    )}
+                  </li>
+                ))}
+              </ul>
+            </>
+          )}
         </Stack>
         <Box ref={mapContainerRef} h='400px' w='100%' mt={4} />
       </Box>

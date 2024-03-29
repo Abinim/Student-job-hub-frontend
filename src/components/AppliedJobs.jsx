@@ -52,7 +52,7 @@ const AppliedJobs = () => {
       templateColumns='repeat(auto-fit, minmax(300px, 1fr))'
       gap={5}
       p={10}
-      pb={300}
+      pb={390}
       style={{
         backgroundImage:
           "url('https://www.wallpapers.net/web/wallpapers/download-3d-geometric-black-cube-wallpaper/2880x1800.jpg')",
