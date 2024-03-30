@@ -56,9 +56,9 @@ const NewJobForm = () => {
     e.preventDefault();
     const jobPosting = {
       ...formData,
-
-      fromDate: formData.fromDate + ':00',
-      toDate: formData.toDate + ':00',
+      // Ensure proper format for date strings
+      fromDate: new Date(formData.fromDate).toISOString(),
+      toDate: new Date(formData.toDate).toISOString(),
     };
     try {
       const response = await addJob(jobPosting);
