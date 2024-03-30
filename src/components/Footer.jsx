@@ -65,7 +65,7 @@ const Footer = () => {
           <ul>
             <li>
               <FontAwesomeIcon icon={faEnvelope} />{' '}
-              <a href='mailto:your@email.com'>abinim.bibek19@email.com</a>
+              <a href='mailto:your@gmail.com'>abinim.bibek19@gmail.com</a>
             </li>
             <li>
               <FontAwesomeIcon icon={faPhone} />{' '}

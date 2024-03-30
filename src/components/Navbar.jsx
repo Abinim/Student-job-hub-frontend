@@ -94,7 +94,7 @@ const Navbar = () => {
               All Jobs
             </MenuItem>
             <MenuItem as={RouterLink} to='/my-jobs' color='black'>
-              My Jobs
+              Posted Jobs
             </MenuItem>
             <MenuItem as={RouterLink} to='/new-job-form' color='black'>
               New Job Form
